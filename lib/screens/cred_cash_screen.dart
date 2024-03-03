@@ -13,7 +13,7 @@ class CredCashScreen extends StatelessWidget {
           backgroundColor: AppColors.blackColor,
           leading: GestureDetector(
             onTap: () => Navigator.pop(context),
-            child: Icon(
+            child: const Icon(
               Icons.arrow_back_ios_new_rounded,
               color: AppColors.whiteColor,
             ),
@@ -23,18 +23,18 @@ class CredCashScreen extends StatelessWidget {
           itemLength: 3,
           itemBuilder: (context, index) {
             if (index == 0) {
-              return AppStackModel(
+              return const AppStackModel(
                 collapsedChild: CreditRequestAmountCollapsedWidget(),
                 expandedChild: CreditRequestAmountExpandedWidget(),
               );
             }
             if (index == 1) {
-              return AppStackModel(
+              return const AppStackModel(
                 expandedChild: EmiPlanExpandedWidget(),
                 collapsedChild: EmiPlanCollapsedWidget(),
               );
             }
-            return AppStackModel(
+            return const AppStackModel(
               expandedChild: SelectBankAccountExpandedWidget(),
               collapsedChild: SizedBox(),
             );

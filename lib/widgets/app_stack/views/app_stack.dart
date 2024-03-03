@@ -14,7 +14,7 @@ class AppStack extends StatelessWidget {
   final IndexedWidgetBuilderCustom itemBuilder;
   final int itemLength;
 
-  AppStack({
+  const AppStack({
     super.key,
     required this.itemBuilder,
     required this.itemLength,
@@ -75,7 +75,6 @@ class _AppStackView extends StatelessWidget {
   }) {
     final widgetList = <Widget>[];
     for (var i = 0; i < itemLength; i++) {
-      // if (i < currentPage) {
       widgetList.add(
         AnimatedPositioned(
           duration: AppDurations.animDuration,
@@ -92,53 +91,34 @@ class _AppStackView extends StatelessWidget {
               child: AnimatedContainer(
                 duration: AppDurations.animDuration,
                 padding: i < currentPage
-                    ? EdgeInsets.symmetric(horizontal: 24, vertical: 16)
+                    ? const EdgeInsets.symmetric(horizontal: 24, vertical: 16)
                     : null,
                 width: double.infinity,
-                child: AnimatedSwitcher(
-                    duration: AppDurations.animDuration,
-                    child: i == currentPage
-                        ? itemBuilder(context, i).expandedChild
-                        : i < currentPage
-                            ? itemBuilder(context, i).collapsedChild
-                            : SizedBox()),
                 decoration: BoxDecoration(
                   color: AppColors.blackColor,
                   border: i < currentPage
-                      ? Border(
+                      ? const Border(
                           top: BorderSide(color: AppColors.borderColor),
                           left: BorderSide(color: AppColors.borderColor),
                         )
                       : i == 0
                           ? null
-                          : Border(
+                          : const Border(
                               top: BorderSide(color: AppColors.borderColor)),
+                ),
+                child: AnimatedSwitcher(
+                  duration: AppDurations.animDuration,
+                  child: i == currentPage
+                      ? itemBuilder(context, i).expandedChild
+                      : i < currentPage
+                          ? itemBuilder(context, i).collapsedChild
+                          : const SizedBox(),
                 ),
               ),
             ),
           ),
         ),
       );
-      // }
-
-      // if (i == currentPage) {
-      //   widgetList.add(
-      //     AnimatedPositioned(
-      //       duration: AppDurations.animDuration,
-      //       top: i == 0 ? 0 : 80.0 * i,
-      //       child: AnimatedContainer(
-      //         duration: AppDurations.animDuration,
-      //         child: itemBuilder(context, i).expandedChild,
-      //         decoration: BoxDecoration(
-      //           color: AppColors.blackColor,
-      //           border: i == 0
-      //               ? null
-      //               : Border(top: BorderSide(color: AppColors.borderColor)),
-      //         ),
-      //       ),
-      //     ),
-      //   );
-      // }
     }
 
     return widgetList;

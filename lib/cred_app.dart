@@ -1,4 +1,5 @@
-import 'package:cred_assignment/screens/home_screen.dart';
+import 'package:cred_assignment/data/colors.dart';
+import 'package:cred_assignment/screens/screens.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -10,13 +11,13 @@ class CredApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
         useMaterial3: true,
-        scaffoldBackgroundColor: Color(0xff0d0d0d),
+        scaffoldBackgroundColor: AppColors.blackColor,
         colorScheme: ColorScheme.fromSeed(
-          seedColor: Color(0xff0d0d0d),
+          seedColor: AppColors.blackColor,
         ),
         textTheme: GoogleFonts.poppinsTextTheme(),
       ),
-      home: HomeScreen(),
+      home: const HomeScreen(),
     );
   }
 }

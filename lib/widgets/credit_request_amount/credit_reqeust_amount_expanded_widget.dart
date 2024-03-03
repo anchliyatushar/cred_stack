@@ -10,21 +10,21 @@ class CreditRequestAmountExpandedWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          const Text(
             'tushar, how much do you\nwant?',
             style: TextStyle(color: AppColors.whiteColor, fontSize: 20),
           ),
-          SizedBox(height: 16),
-          Text(
+          const SizedBox(height: 16),
+          const Text(
             'select any amount you want in your bank account',
             style: TextStyle(color: AppColors.greyColor),
           ),
-          SizedBox(height: 32),
+          const SizedBox(height: 32),
           AppButton(
             onTap: () => context.read<AppStackCubit>().nextPage(),
             text: 'Choose your EMI plan →',

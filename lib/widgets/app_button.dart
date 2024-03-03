@@ -17,7 +17,7 @@ class AppButton extends StatelessWidget {
         child: Center(
           child: Text(
             text,
-            style: TextStyle(
+            style: const TextStyle(
               color: AppColors.blackColor,
               fontWeight: FontWeight.w600,
             ),

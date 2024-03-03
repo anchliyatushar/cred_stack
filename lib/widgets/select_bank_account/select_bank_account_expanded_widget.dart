@@ -8,20 +8,20 @@ class SelectBankAccountExpandedWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          const Text(
             'select your bank account',
             style: TextStyle(color: AppColors.whiteColor, fontSize: 20),
           ),
-          SizedBox(height: 16),
-          Text(
+          const SizedBox(height: 16),
+          const Text(
             'selected amount will be deposited to your savings account',
             style: TextStyle(color: AppColors.greyColor),
           ),
-          SizedBox(height: 32),
+          const SizedBox(height: 32),
           AppButton(
             onTap: () => Navigator.pop(context),
             text: 'Done ✓',
