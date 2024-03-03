@@ -7,6 +7,7 @@ class EmiPlanCollapsedWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,6 +37,12 @@ class EmiPlanCollapsedWidget extends StatelessWidget {
               style: TextStyle(color: AppColors.greyColor),
             ),
           ],
+        ),
+        SizedBox(width: 16),
+        Icon(
+          Icons.arrow_circle_down_rounded,
+          size: 24,
+          color: AppColors.darkGreyColor,
         ),
       ],
     );
