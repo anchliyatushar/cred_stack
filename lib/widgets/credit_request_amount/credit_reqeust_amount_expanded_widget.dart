@@ -12,7 +12,7 @@ class CreditRequestAmountExpandedWidget extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
       child: Column(
-        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
@@ -24,7 +24,7 @@ class CreditRequestAmountExpandedWidget extends StatelessWidget {
             'select any amount you want in your bank account',
             style: TextStyle(color: AppColors.greyColor),
           ),
-          Spacer(),
+          SizedBox(height: 32),
           AppButton(
             onTap: () => context.read<AppStackCubit>().nextPage(),
             text: 'Choose your EMI plan →',

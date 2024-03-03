@@ -1,7 +1,6 @@
 import 'package:cred_assignment/screens/cred_cash_screen.dart';
 import 'package:cred_assignment/widgets/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:neopop/widgets/buttons/neopop_button/neopop_button.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

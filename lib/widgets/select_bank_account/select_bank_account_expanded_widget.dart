@@ -10,7 +10,6 @@ class SelectBankAccountExpandedWidget extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
       child: Column(
-        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
@@ -22,7 +21,7 @@ class SelectBankAccountExpandedWidget extends StatelessWidget {
             'selected amount will be deposited to your savings account',
             style: TextStyle(color: AppColors.greyColor),
           ),
-          Spacer(),
+          SizedBox(height: 32),
           AppButton(
             onTap: () => Navigator.pop(context),
             text: 'Done ✓',

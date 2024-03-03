@@ -12,7 +12,6 @@ class EmiPlanExpandedWidget extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
       child: Column(
-        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
@@ -24,7 +23,7 @@ class EmiPlanExpandedWidget extends StatelessWidget {
             'one rate of interest for all options',
             style: TextStyle(color: AppColors.greyColor),
           ),
-          Spacer(),
+          SizedBox(height: 32),
           AppButton(
             onTap: () => context.read<AppStackCubit>().nextPage(),
             text: 'Choose your bank account →',

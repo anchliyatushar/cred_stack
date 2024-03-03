@@ -1,8 +1,11 @@
 import 'package:cred_assignment/data/data.dart';
 import 'package:cred_assignment/logic/app_stack_cubit.dart';
+import 'package:cred_assignment/utils/utils.dart';
 import 'package:cred_assignment/widgets/widgets.dart';
 import 'package:entry/entry.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 typedef IndexedWidgetBuilderCustom = AppStackModel Function(
@@ -73,29 +76,70 @@ class _AppStackView extends StatelessWidget {
   }) {
     final widgetList = <Widget>[];
     for (var i = 0; i < itemLength; i++) {
-      if (i < currentPage) {
-        widgetList.add(itemBuilder(context, i).collapsedChild);
-      }
-
-      if (i == currentPage) {
-        widgetList.add(
-          Entry.offset(
-            yOffset: 1000,
-            child: Container(
-              child: itemBuilder(context, i).expandedChild,
-              decoration: BoxDecoration(
-                border: i == 0
-                    ? null
-                    : Border(
-                        top: BorderSide(
-                          color: AppColors.borderColor,
-                        ),
-                      ),
+      // if (i < currentPage) {
+      widgetList.add(
+        AnimatedPositioned(
+          duration: AppDurations.animDuration,
+          top: i == 0 ? 0 : (80.0 * i),
+          left: i == currentPage ? 0 : (currentPage - i) * 40,
+          width: MediaQuery.sizeOf(context).width,
+          height: context.availableHeight,
+          child: GestureDetector(
+            onTap: i < currentPage
+                ? () => context.read<AppStackCubit>().setPage(i)
+                : null,
+            child: Visibility(
+              visible: i <= currentPage,
+              child: AnimatedContainer(
+                duration: AppDurations.animDuration,
+                padding: i < currentPage
+                    ? EdgeInsets.symmetric(horizontal: 24, vertical: 16)
+                    : null,
+                width: double.infinity,
+                child: AnimatedSwitcher(
+                    duration: AppDurations.animDuration,
+                    child: i == currentPage
+                        ? itemBuilder(context, i).expandedChild
+                        : i < currentPage
+                            ? itemBuilder(context, i).collapsedChild
+                            : SizedBox()),
+                decoration: BoxDecoration(
+                  color: AppColors.blackColor,
+                  border: i < currentPage
+                      ? Border(
+                          top: BorderSide(color: AppColors.borderColor),
+                          left: BorderSide(color: AppColors.borderColor),
+                        )
+                      : i == 0
+                          ? null
+                          : Border(
+                              top: BorderSide(color: AppColors.borderColor)),
+                ),
               ),
             ),
           ),
-        );
-      }
+        ),
+      );
+      // }
+
+      // if (i == currentPage) {
+      //   widgetList.add(
+      //     AnimatedPositioned(
+      //       duration: AppDurations.animDuration,
+      //       top: i == 0 ? 0 : 80.0 * i,
+      //       child: AnimatedContainer(
+      //         duration: AppDurations.animDuration,
+      //         child: itemBuilder(context, i).expandedChild,
+      //         decoration: BoxDecoration(
+      //           color: AppColors.blackColor,
+      //           border: i == 0
+      //               ? null
+      //               : Border(top: BorderSide(color: AppColors.borderColor)),
+      //         ),
+      //       ),
+      //     ),
+      //   );
+      // }
     }
 
     return widgetList;
