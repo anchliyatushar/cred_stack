@@ -107,7 +107,7 @@ class _AppStackView extends StatelessWidget {
     return Visibility(
       visible: i <= currentPage,
       child: AnimatedContainer(
-        duration: AppDurations.animDuration200,
+        duration: AppDurations.animDuration,
         padding: i < currentPage
             ? const EdgeInsets.symmetric(horizontal: 24, vertical: 16)
             : null,
@@ -125,9 +125,9 @@ class _AppStackView extends StatelessWidget {
           duration: AppDurations.animDuration,
           child: i == currentPage
               ? Entry.offset(
-                  duration: AppDurations.animDuration200,
+                  duration: AppDurations.animDuration,
                   child: AnimatedContainer(
-                    duration: AppDurations.animDuration200,
+                    duration: AppDurations.animDuration,
                     decoration: BoxDecoration(
                       border: i == 0
                           ? null
