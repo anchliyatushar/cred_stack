@@ -2,7 +2,6 @@ import 'package:cred_assignment/data/data.dart';
 import 'package:cred_assignment/logic/app_stack_cubit.dart';
 import 'package:cred_assignment/utils/utils.dart';
 import 'package:cred_assignment/widgets/widgets.dart';
-import 'package:entry/entry.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
