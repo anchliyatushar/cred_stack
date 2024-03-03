@@ -1,5 +1,7 @@
 import 'package:cred_assignment/screens/cred_cash_screen.dart';
+import 'package:cred_assignment/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:neopop/widgets/buttons/neopop_button/neopop_button.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -8,16 +10,19 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: GestureDetector(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (_) => const CredCashScreen(),
-              ),
-            );
-          },
-          child: const Text('home'),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 24),
+          child: AppButton(
+            text: 'Move to cred cash',
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const CredCashScreen(),
+                ),
+              );
+            },
+          ),
         ),
       ),
     );

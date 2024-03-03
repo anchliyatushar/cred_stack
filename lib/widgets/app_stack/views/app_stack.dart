@@ -1,5 +1,7 @@
+import 'package:cred_assignment/data/data.dart';
 import 'package:cred_assignment/logic/app_stack_cubit.dart';
 import 'package:cred_assignment/widgets/widgets.dart';
+import 'package:entry/entry.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -76,7 +78,23 @@ class _AppStackView extends StatelessWidget {
       }
 
       if (i == currentPage) {
-        widgetList.add(itemBuilder(context, i).expandedChild);
+        widgetList.add(
+          Entry.offset(
+            yOffset: 1000,
+            child: Container(
+              child: itemBuilder(context, i).expandedChild,
+              decoration: BoxDecoration(
+                border: i == 0
+                    ? null
+                    : Border(
+                        top: BorderSide(
+                          color: AppColors.borderColor,
+                        ),
+                      ),
+              ),
+            ),
+          ),
+        );
       }
     }
 

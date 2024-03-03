@@ -4,8 +4,8 @@ import 'package:cred_assignment/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CreditRequestAmountExpandedWidget extends StatelessWidget {
-  const CreditRequestAmountExpandedWidget({super.key});
+class EmiPlanExpandedWidget extends StatelessWidget {
+  const EmiPlanExpandedWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,18 +16,18 @@ class CreditRequestAmountExpandedWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'tushar, how much do you\nwant?',
+            'pick your EMI plan',
             style: TextStyle(color: AppColors.whiteColor, fontSize: 20),
           ),
           SizedBox(height: 16),
           Text(
-            'select any amount you want in your bank account',
+            'one rate of interest for all options',
             style: TextStyle(color: AppColors.greyColor),
           ),
           Spacer(),
           AppButton(
             onTap: () => context.read<AppStackCubit>().nextPage(),
-            text: 'Choose your EMI plan →',
+            text: 'Choose your bank account →',
           ),
         ],
       ),

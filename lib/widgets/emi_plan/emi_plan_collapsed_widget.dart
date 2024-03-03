@@ -3,8 +3,8 @@ import 'package:cred_assignment/logic/logic.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CreditRequestAmountCollapsedWidget extends StatelessWidget {
-  const CreditRequestAmountCollapsedWidget({super.key});
+class EmiPlanCollapsedWidget extends StatelessWidget {
+  const EmiPlanCollapsedWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +18,8 @@ class CreditRequestAmountCollapsedWidget extends StatelessWidget {
         ),
       ),
       child: GestureDetector(
-        onTap: () => context.read<AppStackCubit>().setPage(0),
+        onTap: () => context.read<AppStackCubit>().setPage(1),
         child: Column(
-          mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
