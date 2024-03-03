@@ -3,7 +3,7 @@ import 'package:cred_assignment/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-typedef IndexedWidgetBuilderCustom = AppStackChildView Function(
+typedef IndexedWidgetBuilderCustom = AppStackModel Function(
     BuildContext context, int index);
 
 class AppStack extends StatelessWidget {

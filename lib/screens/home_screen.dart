@@ -1,4 +1,4 @@
-import 'package:cred_assignment/screens/credit_amount_screen.dart';
+import 'package:cred_assignment/screens/cred_cash_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -13,7 +13,7 @@ class HomeScreen extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (_) => const CreditAmountScreen(),
+                builder: (_) => const CredCashScreen(),
               ),
             );
           },
