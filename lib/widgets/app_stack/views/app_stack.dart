@@ -1,7 +1,7 @@
 import 'package:cred_assignment/data/data.dart';
 import 'package:cred_assignment/logic/app_stack_cubit.dart';
-import 'package:cred_assignment/utils/utils.dart';
 import 'package:cred_assignment/widgets/widgets.dart';
+import 'package:entry/entry.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -81,40 +81,15 @@ class _AppStackView extends StatelessWidget {
           top: i == 0 ? 0 : (80.0 * i),
           left: i == currentPage ? 0 : (currentPage - i) * 40,
           width: MediaQuery.sizeOf(context).width,
-          height: context.availableHeight,
+          height: MediaQuery.sizeOf(context).height,
           child: GestureDetector(
             onTap: i < currentPage
                 ? () => context.read<AppStackCubit>().setPage(i)
                 : null,
-            child: Visibility(
-              visible: i <= currentPage,
-              child: AnimatedContainer(
-                duration: AppDurations.animDuration,
-                padding: i < currentPage
-                    ? const EdgeInsets.symmetric(horizontal: 24, vertical: 16)
-                    : null,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: AppColors.blackColor,
-                  border: i < currentPage
-                      ? const Border(
-                          top: BorderSide(color: AppColors.borderColor),
-                          left: BorderSide(color: AppColors.borderColor),
-                        )
-                      : i == 0
-                          ? null
-                          : const Border(
-                              top: BorderSide(color: AppColors.borderColor)),
-                ),
-                child: AnimatedSwitcher(
-                  duration: AppDurations.animDuration,
-                  child: i == currentPage
-                      ? itemBuilder(context, i).expandedChild
-                      : i < currentPage
-                          ? itemBuilder(context, i).collapsedChild
-                          : const SizedBox(),
-                ),
-              ),
+            child: _renderAnimatedContainer(
+              context: context,
+              i: i,
+              currentPage: currentPage,
             ),
           ),
         ),
@@ -122,5 +97,55 @@ class _AppStackView extends StatelessWidget {
     }
 
     return widgetList;
+  }
+
+  Widget _renderAnimatedContainer({
+    required BuildContext context,
+    required int i,
+    required int currentPage,
+  }) {
+    return Visibility(
+      visible: i <= currentPage,
+      child: AnimatedContainer(
+        duration: AppDurations.animDuration200,
+        padding: i < currentPage
+            ? const EdgeInsets.symmetric(horizontal: 24, vertical: 16)
+            : null,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: AppColors.blackColor,
+          border: i < currentPage
+              ? const Border(
+                  top: BorderSide(color: AppColors.borderColor),
+                  left: BorderSide(color: AppColors.borderColor),
+                )
+              : null,
+        ),
+        child: AnimatedSwitcher(
+          duration: AppDurations.animDuration,
+          child: i == currentPage
+              ? Entry.offset(
+                  duration: AppDurations.animDuration200,
+                  child: AnimatedContainer(
+                    duration: AppDurations.animDuration200,
+                    decoration: BoxDecoration(
+                      border: i == 0
+                          ? null
+                          : const Border(
+                              top: BorderSide(color: AppColors.borderColor),
+                            ),
+                    ),
+                    child: itemBuilder(context, i).expandedChild,
+                  ),
+                )
+              : Entry.opacity(
+                  duration: AppDurations.animDuration,
+                  child: i < currentPage
+                      ? Container(child: itemBuilder(context, i).collapsedChild)
+                      : const SizedBox(),
+                ),
+        ),
+      ),
+    );
   }
 }
